@@ -33,9 +33,9 @@ from app.models import Category,User,Peptalk,Comments
 # migrate = Migrate(app,db)
 # manager.add_command('db',MigrateCommand)
 
-# @manager.shell
-# def make_shell_context():
-#     return dict(app = app, db = db, Category = Category, User = User, Peptalk = Peptalk, Comments = Comments)
+@manager.shell
+def make_shell_context():
+    return dict(app = app, db = db, Category = Category, User = User, Peptalk = Peptalk, Comments = Comments)
 
 
 if __name__ == '__main__':
