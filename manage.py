@@ -1,4 +1,4 @@
-from app import create_app
+from app import create_app,db
 from flask_script import Manager,Server
 
 # Creating app instance
@@ -41,5 +41,4 @@ def make_shell_context():
 if __name__ == '__main__':
     manager.run()
 
-if __name__ == '__main__':
-    manager.run()
+
