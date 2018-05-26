@@ -12,7 +12,7 @@ This is a web application that allows various users to submit a short pitch. Use
 
 User Stories
 ----
-As a user I would like to view the different categories. 
+* As a user I would like to view the different categories. 
 * As a user I would like to see the pitches other people have posted. 
 
 * As a user I would like to comment on the different pitches and leave feedback. 
@@ -42,8 +42,8 @@ No known bugs
 
 Technologies Used
 -----
- * HTML
- * CSS
+* HTML
+* CSS
 * Python3.6
 * Flask Bootstrap 
 * Postgres Database
