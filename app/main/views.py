@@ -55,6 +55,8 @@ def new_pitch(id):
     title = 'New pitch'
     return render_template('new_pitches.html', title = title, pitch_form = form)
 
+
+
 # Dynamic routing for one pitch
 @main.route('/pitch/<int:id>', methods = ['GET','POST'])
 @login_required
@@ -71,6 +73,8 @@ def single_pitch(id):
     comment = Comments.get_comments(id)
     title = 'Comment Section'
     return render_template('pitch.html', title = title, pitches = pitches, comment = comment)
+
+
 
 
 # Dynamic routing for comment section
