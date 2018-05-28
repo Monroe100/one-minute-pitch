@@ -1,18 +1,10 @@
 
 from flask import render_template,redirect,url_for,abort
 from . import main
-<<<<<<< HEAD
 from ..models import Category, User,Pitch, Comments
 from .. import db
 from flask_login import login_required, current_user
 from .forms import PitchForm,CommentForm
-=======
-from ..models import Category, User,Peptalk, Comments
-from .. import db
-from flask_login import login_required, current_user
-from .forms import PeptalkForm,CommentForm
->>>>>>> c74fb1c5c010f7302e5447fd11140ed96877d666
-
 # Views
 @main.route('/')
 def index():
@@ -35,11 +27,8 @@ def category(id):
     if category is None:
         abort(404)
         
-<<<<<<< HEAD
+
     pitches = Pitch.get_pitches(id)
-=======
-    pitches = Peptalk.get_pitches(id)
->>>>>>> c74fb1c5c010f7302e5447fd11140ed96877d666
     title = "Pitches"
     return render_template('category.html', title = title, category = category,pitches = pitches)
 
@@ -50,11 +39,7 @@ def new_pitch(id):
     '''
     Function to check Pitches form
     '''
-<<<<<<< HEAD
     form = PitchForm()
-=======
-    form = PeptalkForm()
->>>>>>> c74fb1c5c010f7302e5447fd11140ed96877d666
     category = Category.query.filter_by(id=id).first()
 
     if category is None:
@@ -63,22 +48,14 @@ def new_pitch(id):
     if form.validate_on_submit():
         content = form.content.data
         # user = current_user._get_current_object()
-<<<<<<< HEAD
+
         new_pitch = Pitch(content=content,user_id=current_user.id,category_id=category.id)
-=======
-        new_pitch = Peptalk(content=content,user_id=current_user.id,category_id=category.id)
->>>>>>> c74fb1c5c010f7302e5447fd11140ed96877d666
         new_pitch.save_pitch()
         return redirect(url_for('.category', id = category.id))
 
     title = 'New pitch'
     return render_template('new_pitches.html', title = title, pitch_form = form)
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> c74fb1c5c010f7302e5447fd11140ed96877d666
 # Dynamic routing for one pitch
 @main.route('/pitch/<int:id>', methods = ['GET','POST'])
 @login_required
@@ -87,11 +64,8 @@ def single_pitch(id):
     Function the returns a single pitch for comment to be added
     '''
 
-<<<<<<< HEAD
+
     pitches = Pitch.query.get(id)
-=======
-    pitches = Peptalk.query.get(id)
->>>>>>> c74fb1c5c010f7302e5447fd11140ed96877d666
 
     if pitches is None:
         abort(404)
@@ -101,11 +75,7 @@ def single_pitch(id):
     return render_template('pitch.html', title = title, pitches = pitches, comment = comment)
 
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> c74fb1c5c010f7302e5447fd11140ed96877d666
 # Dynamic routing for comment section
 @main.route('/pitch/new/<int:id>', methods = ['GET','POST'])
 @login_required
@@ -114,11 +84,8 @@ def new_comment(id):
     Function that returns a list of comments for the particular pitch
     '''
     form = CommentForm()
-<<<<<<< HEAD
+
     pitches = Pitch.query.filter_by(id=id).first()
-=======
-    pitches = Peptalk.query.filter_by(id=id).first()
->>>>>>> c74fb1c5c010f7302e5447fd11140ed96877d666
 
     if pitches is None:
         abort(404)
@@ -130,8 +97,5 @@ def new_comment(id):
         return redirect(url_for('.category', id = pitches.id))
 
     title = 'New Comment'
-<<<<<<< HEAD
+
     return render_template('comments.html', title = title, comment_form = form)
-=======
-    return render_template('comments.html', title = title, comment_form = form)
->>>>>>> c74fb1c5c010f7302e5447fd11140ed96877d666
