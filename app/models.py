@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> c74fb1c5c010f7302e5447fd11140ed96877d666
 from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
@@ -37,7 +40,11 @@ class Category(db.Model):
         return categories
 
 #pitches
+<<<<<<< HEAD
 class Pitch(db.Model):
+=======
+class Peptalk(db.Model):
+>>>>>>> c74fb1c5c010f7302e5447fd11140ed96877d666
 
     """
     List of pitches in each category
@@ -51,7 +58,11 @@ class Pitch(db.Model):
     date_posted = db.Column(db.DateTime,default=datetime.now)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
     category_id = db.Column(db.Integer,db.ForeignKey("categories.id"))
+<<<<<<< HEAD
     comment = db.relationship("Comments", backref="Pitch", lazy = "dynamic")
+=======
+    comment = db.relationship("Comments", backref="peptalk", lazy = "dynamic")
+>>>>>>> c74fb1c5c010f7302e5447fd11140ed96877d666
 
 
 
@@ -64,12 +75,20 @@ class Pitch(db.Model):
 
     @classmethod
     def clear_pitches(cls):
+<<<<<<< HEAD
         Pitch.all_pitches.clear()
+=======
+        Peptalk.all_pitches.clear()
+>>>>>>> c74fb1c5c010f7302e5447fd11140ed96877d666
 
     # display pitches
     @classmethod
     def get_pitches(cls,id):
+<<<<<<< HEAD
         pitches = Pitch.query.order_by(Pitch.date_posted.desc()).filter_by(category_id=id).all()
+=======
+        pitches = Peptalk.query.order_by(Peptalk.date_posted.desc()).filter_by(category_id=id).all()
+>>>>>>> c74fb1c5c010f7302e5447fd11140ed96877d666
         return pitches
 
 
@@ -86,8 +105,14 @@ class User(UserMixin,db.Model):
     username = db.Column(db.String(255))
     email=db.Column(db.String(255),unique=True,index=True)
     password_hash=db.Column(db.String(255))
+<<<<<<< HEAD
     pitches = db.relationship("Pitch", backref="User", lazy = "dynamic")
     comment = db.relationship("Comments", backref="User", lazy = "dynamic")
+=======
+    pass_secure = db.Column(db.String(255))
+    pitches = db.relationship("Peptalk", backref="user", lazy = "dynamic")
+    comment = db.relationship("Comments", backref="user", lazy = "dynamic")
+>>>>>>> c74fb1c5c010f7302e5447fd11140ed96877d666
 
     # securing our passwords
     @property
@@ -111,11 +136,19 @@ class Comments(db.Model):
     '''
     Comment class that creates new comments from users in pitches
     '''
+<<<<<<< HEAD
     __tablename__ = 'comments'
+=======
+    __tablename__ = 'comment'
+>>>>>>> c74fb1c5c010f7302e5447fd11140ed96877d666
 
     # add columns
     id = db.Column(db. Integer,primary_key = True)
     comment_section_id = db.Column(db.String(255))
+<<<<<<< HEAD
+=======
+    date_posted = db.Column(db.DateTime,default=datetime.utcnow)
+>>>>>>> c74fb1c5c010f7302e5447fd11140ed96877d666
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
     pitches_id = db.Column(db.Integer,db.ForeignKey("pitches.id"))
 
@@ -129,4 +162,8 @@ class Comments(db.Model):
     @classmethod
     def get_comments(self,id):
         comment = Comments.query.order_by(Comments.date_posted.desc()).filter_by(pitches_id=id).all()
+<<<<<<< HEAD
         return comment
+=======
+        return comment
+>>>>>>> c74fb1c5c010f7302e5447fd11140ed96877d666

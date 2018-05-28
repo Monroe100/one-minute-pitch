@@ -3,7 +3,13 @@
 
 <!-- content block -->
 {% block content %}
+<<<<<<< HEAD
 <h3 class="text-center">Make your one minute count. <small class="text-danger"> <i>Click pitch to comment</i></small></h3>
 <hr> {% if pitches %} {{ macro.displayPitches(pitches)}} {%else%}
 <h4 class="text-right text-success">No pitch available</h4>{% endif %}
+=======
+<h3 class="text-center">Make your sixty seconds count. <small class="text-danger"> <i>Click on the pitch to comment</i></small></h3>
+<hr> {% if pitches %} {{ macro.displayPitches(pitches)}} {%else%}
+<h4 class="text-right text-danger">There isn't any pitch at the moment</h4>{% endif %}
+>>>>>>> c74fb1c5c010f7302e5447fd11140ed96877d666
 <a class="btn btn-primary text-center text-danger" href="/category/pitch/new/{{category.id}}">Write a new Pitch</a>{% endblock %}
