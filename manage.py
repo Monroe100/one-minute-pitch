@@ -1,7 +1,7 @@
 from app import create_app,db
 from flask_script import Manager,Server
 <<<<<<< HEAD
-from app.models import User,Category,Peptalk,Comments
+from app.models import User,Category,Pitch,Comments
 from  flask_migrate import Migrate, MigrateCommand
 from flask_login import LoginManager
 
@@ -9,14 +9,36 @@ from flask_login import LoginManager
 
 # Creating app instances
 
-app = create_app('production')
+# Creating app instance
+app = create_app('development')
 
 manager = Manager(app)
 manager.add_command('server',Server)
+@manager.command
+def test():
+    """Run the unit tests.
+    """
+    import unittest
+    tests = unittest.TestLoader().discover('tests')
+    unittest.TextTestRunner(verbosity=2).run(tests)
 
-#Migration
-migrate = Migrate(app,db)
-manager.add_command('db',MigrateCommand)
+# from app import create_app,db
+# from flask_script import Manager,Server
+# from  flask_migrate import Migrate, MigrateCommand
+# from flask_login import LoginManager
+
+
+
+# # Creating app instances
+# # app = create_app('development')
+# app = create_app('production')
+
+# manager = Manager(app)
+# manager.add_command('server',Server)
+
+# #Migration
+# migrate = Migrate(app,db)
+# manager.add_command('db',MigrateCommand)
 =======
 
 # Creating app instance
@@ -54,7 +76,7 @@ from app.models import Category,User,Peptalk,Comments
 
 @manager.shell
 def make_shell_context():
-    return dict(app = app, db = db, Category = Category, User = User, Peptalk = Peptalk, Comments = Comments)
+    return dict(app = app, db = db, Category = Category, User = User, Pitch = Pitch, Comments = Comments)
 
 
 if __name__ == '__main__':
@@ -62,6 +84,4 @@ if __name__ == '__main__':
     manager.run()
 =======
     manager.run()
-
-
 >>>>>>> c74fb1c5c010f7302e5447fd11140ed96877d666
