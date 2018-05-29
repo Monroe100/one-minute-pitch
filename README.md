@@ -19,16 +19,7 @@ User Stories
 * As a user I would like to submit a pitch in any category. 
 * As a user I would like to vote on the pitch they liked and give it a downvote or upvote. 
 
-Specifications
-----
-Behaviour	Input	Output
-----------
- * Display Various Pitch Categories	* Various pitches grouped by category are displayed
-* Display pitches-Click on a Category	A page with a list of pitches from the selected category
-* Add new pitch-Click New pitch	User Should register/sign in to add new pitch
-View Pitches-Click on a pitch	
-* View a pitch and comments
-Comment on a pitch	Click Comment	* Registered User displays a form where a user can comment on a certain pitch
+
 Setup/Installation Requirements
 ------
 * Virtual environment
